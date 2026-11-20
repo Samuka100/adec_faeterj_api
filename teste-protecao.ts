@@ -1,0 +1,1 @@
+const protegido = false;
