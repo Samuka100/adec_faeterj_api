@@ -2,6 +2,7 @@ services:
   app:
     build:
       context: .
+      target: development
     restart: unless-stopped
     container_name: ${CONTAINER_NAME}
     ports:
