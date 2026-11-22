@@ -15,9 +15,11 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
     "skipLibCheck": true,
     "strict": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "types": ["vitest/globals", "node"]
   },
   "include": ["src"],
   "watchOptions": {
