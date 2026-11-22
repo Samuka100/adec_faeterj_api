@@ -1,14 +1,16 @@
 import 'dotenv/config';
-import mongoose from 'mongoose';
 import { app } from './app.js';
+import { connectDatabase } from './config/database.js';
+import { isProduction, logger } from './config/logger.js';
 
-const connectString = process.env.CONNECTSTRING;
-if (!connectString) {
-  throw new Error('CONNECTSTRING não definida');
+try {
+  await connectDatabase();
+} catch (err) {
+  logger.fatal({ err }, 'Falha ao conectar no MongoDB');
+  process.exit(1);
 }
 
-await mongoose.connect(connectString, { dbName: process.env.DB_NAME });
-console.log(`MongoDB conectado (banco: ${process.env.DB_NAME})`);
-
-const port = process.env.PORT ?? 8080;
-app.listen(port, () => console.log(`SERVER RUN ON: http://localhost:${port}`));
+const port = Number(process.env.PORT ?? 8080);
+app.listen(port, () => {
+  logger.info(isProduction ? 'HTTP server listening' : `HTTP server listening on http://localhost:${port}`);
+});

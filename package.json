@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "nodemon -L --watch src --ext ts --exec tsx src/index.ts",
+    "dev": "nodemon -L --watch src --ext ts --exec \"tsc && node dist/index.js || exit 1\"",
     "build": "tsc",
     "start": "node dist/index.js",
     "test": "vitest run"
@@ -24,13 +24,16 @@
   "dependencies": {
     "dotenv": "^18.0.10",
     "express": "^5.3.0",
-    "mongoose": "^9.12.2"
+    "mongoose": "^9.12.2",
+    "pino": "^10.4.0",
+    "pino-http": "^11.0.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.6",
     "@types/supertest": "^7.2.1",
     "nodemon": "^3.1.11",
+    "pino-pretty": "^13.2.0",
     "supertest": "^7.3.2",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
