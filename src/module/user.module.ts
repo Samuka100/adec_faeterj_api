@@ -1,10 +1,5 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
-
-export enum UserRole {
-  USER = "user",
-  ADMIN = "admin",
-}
-
+import { UserRole } from "../enum/user-role.enum.js";
 export interface IUser {
   name?: string;
   email: string;
