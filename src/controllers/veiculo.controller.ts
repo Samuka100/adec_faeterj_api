@@ -34,5 +34,11 @@ export class VeiculoController {
         res.status(201).json({ success: true, message: 'Veículo criado com sucesso', data: veiculo });
 
     }
+
+        static async list(_req: Request, res: Response) {
+        const veiculos = await VeiculoModel.find();
+
+        res.status(200).json({ success: true, message: 'Veículos listados com sucesso', data: veiculos });
+    }
 }
 

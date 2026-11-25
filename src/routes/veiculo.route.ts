@@ -6,5 +6,6 @@ import { validateDto } from "../middleware/validate-dto.middleware.js";
 const router = Router();
 
 router.post("/", validateDto(CreateVeiculoDto), VeiculoController.create);
+router.get("/", VeiculoController.list);
 
 export default router;
