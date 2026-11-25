@@ -40,6 +40,15 @@ A aplicação disponibiliza endpoints para monitoramento e gerenciamento de usu�
 }
 ```
 
+## Documentação da API (Swagger)
+
+Com a API rodando, a documentação interativa fica em:
+
+- `http://localhost:8080/docs`: interface do Swagger
+- `http://localhost:8080/docs.json`: especificação OpenAPI em JSON
+
+Para criar uma rota nova e documentá-la, siga o guia [Como criar uma rota e documentar no Swagger](docs/criando-uma-rota.md).
+
 ## Configuração do ambiente
 
 ### Pré-requisitos

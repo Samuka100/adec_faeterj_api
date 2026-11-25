@@ -39,12 +39,14 @@ export class AuthController {
         name,
         email,
         password: hashPassword,
-        role: UserRole.USER, // sempre "user" no cadastro público
+        role: UserRole.USER,
       });
 
-      const secret = process.env.ACESS_TOKEN_SECRET;
+      console.log('usuário', createUser);
+      
+      const secret = process.env.ACCESS_TOKEN_SECRET;
       if (!secret) {
-        throw new Error("ACESS_TOKEN_SECRET não definido");
+        throw new Error("ACCESS_TOKEN_SECRET não definido");
       }
 
       const token = jwt.sign(
@@ -78,7 +80,6 @@ export class AuthController {
         },
       });
     } catch (error: any) {
-      // corrida entre o findOne e o create: o índice unique do Mongo barra o duplicado
       if (error?.code === 11000) {
         res.status(409).json({ success: false, message: "Usuário já cadastrado!" });
         return;
