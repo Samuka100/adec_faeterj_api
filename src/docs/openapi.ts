@@ -3,6 +3,7 @@ import { authPaths } from "./paths/auth.js";
 import { healthPaths } from "./paths/health.js";
 import { responses } from "./responses.js";
 import { schemas } from "./schemas.js";
+import { veiculoPaths } from "./paths/veiculo.js";
 
 // Junta as partes da documentação. Para um módulo novo, crie paths/<modulo>.ts e adicione aqui.
 export const openApiSpec: JsonObject = {
@@ -14,10 +15,12 @@ export const openApiSpec: JsonObject = {
   tags: [
     { name: "Health", description: "Status da API" },
     { name: "Auth", description: "Cadastro e autenticação de usuários" },
+    { name: "Veículo", description: "Cadastro e gerenciamento de veículos" },
   ],
   paths: {
     ...healthPaths,
     ...authPaths,
+    ...veiculoPaths,
   },
   components: {
     securitySchemes: {
