@@ -7,6 +7,7 @@ import {
   IsString,
   MinLength,
 } from "class-validator";
+import { JSONSchema } from "class-validator-jsonschema";
 import { UserRole } from "../enum/user-role.enum.js";
 
 export class CreateUserDto {
@@ -36,6 +37,7 @@ export class RegisterDto {
   @IsOptional()
   @IsString({ message: "Nome deve ser uma string" })
   @Transform(({ value }) => (typeof value === "string" ? value.trim() : value))
+  @JSONSchema({ example: "Arnaldo" })
   name?: string;
 
   @IsNotEmpty({ message: "E-mail é obrigatório" })
@@ -43,11 +45,13 @@ export class RegisterDto {
   @Transform(({ value }) =>
     typeof value === "string" ? value.trim().toLowerCase() : value
   )
+  @JSONSchema({ example: "arnaldo@gmail.com" })
   email!: string;
 
   @IsNotEmpty({ message: "Senha é obrigatória" })
   @IsString()
   @MinLength(6, { message: "A senha deve ter no mínimo 6 caracteres" })
+  @JSONSchema({ example: "arnaldo@123" })
   password!: string;
 }
 

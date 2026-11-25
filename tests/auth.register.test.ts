@@ -14,7 +14,7 @@ const create = vi.mocked(UserModel.create);
 describe('POST /auth/register', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    process.env.ACESS_TOKEN_SECRET = 'segredo-de-teste';
+    process.env.ACCESS_TOKEN_SECRET  = 'segredo-de-teste';
     process.env.TOKEN_EXPIRATION = '1d';
   });
 

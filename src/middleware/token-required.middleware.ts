@@ -20,10 +20,10 @@ export default (req: Request, res: Response, next: NextFunction): void => {
     return;
   }
 
-  const secret = process.env.ACESS_TOKEN_SECRET;
+  const secret = process.env.ACCESS_TOKEN_SECRET ;
 
   if (!secret) {
-    console.error("ACESS_TOKEN_SECRET não definido");
+    console.error("ACCESS_TOKEN_SECRET  não definido");
     res.status(500).json({ message: "Algo deu errado!" });
     return;
   }
